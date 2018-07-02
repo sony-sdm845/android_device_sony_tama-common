@@ -86,6 +86,10 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
+# Common init scripts
+PRODUCT_PACKAGES += \
+    init.recovery.qcom.rc
+
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \
