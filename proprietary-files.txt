@@ -218,8 +218,6 @@ lib/libmmparser_lite.so
 lib/libOmxMux.so
 
 # NFC
--app/NfcNci/NfcNci.apk
--app/SecureElement/SecureElement.apk
 etc/permissions/com.nxp.nfc.xml
 
 # QSEECOMD
