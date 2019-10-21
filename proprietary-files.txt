@@ -153,6 +153,9 @@ lib/vendor.qti.hardware.radio.ims@1.1.so
 lib/vendor.qti.hardware.radio.ims@1.2.so
 lib/vendor.qti.hardware.radio.ims@1.3.so
 lib/android.hardware.radio.config@1.0.so
+lib/android.hardware.radio@1.0.so
+lib/android.hardware.radio@1.1.so
+lib/android.hardware.radio@1.2.so
 lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.ims.rcsconfig@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
@@ -174,6 +177,9 @@ lib64/vendor.qti.hardware.radio.ims@1.1.so
 lib64/vendor.qti.hardware.radio.ims@1.2.so
 lib64/vendor.qti.hardware.radio.ims@1.3.so
 lib64/android.hardware.radio.config@1.0.so
+lib64/android.hardware.radio@1.0.so
+lib64/android.hardware.radio@1.1.so
+lib64/android.hardware.radio@1.2.so
 lib64/vendor.qti.ims.callinfo@1.0.so
 lib64/vendor.qti.ims.rcsconfig@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
@@ -448,3 +454,13 @@ lib64/libtzcom.so
 lib64/libminijail.so
 lib/libprotobuf-cpp-full.so
 lib64/libprotobuf-cpp-full.so
+lib/libsmcinvokecred.so
+lib64/libsmcinvokecred.so
+lib/android.hardware.biometrics.fingerprint@2.1.so
+lib64/android.hardware.biometrics.fingerprint@2.1.so
+lib/android.hidl.manager@1.0.so
+lib64/android.hidl.manager@1.0.so
+lib/android.hardware.radio.deprecated@1.0.so
+lib64/android.hardware.radio.deprecated@1.0.so
+lib/libqcbor.so
+lib64/libqcbor.so
