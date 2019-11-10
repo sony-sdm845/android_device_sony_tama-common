@@ -58,6 +58,9 @@
 # Shell scripts
 /(vendor|system/vendor)/bin/init\.qcom\.msim\.sh        u:object_r:init-qcom-msim-sh_exec:s0
 
+# Updatemiscta
+/system/bin/updatemiscta                                u:object_r:updatemiscta_exec:s0
+
 # Vendor executables
 /(vendor|system/vendor)/bin/hw/kobjeventd		u:object_r:kobjeventd_exec:s0
 /(vendor|system/vendor)/bin/iddd		        u:object_r:idd_exec:s0

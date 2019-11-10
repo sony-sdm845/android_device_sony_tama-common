@@ -12,3 +12,7 @@ ro.vendor.semc.                 u:object_r:sony_prop:s0
 ro.vendor.sony.                 u:object_r:sony_prop:s0
 persist.vendor.mlog_qmi.        u:object_r:vendor_radio_prop:s0
 vendor.cover_state              u:object_r:vendor_cover_state_prop:s0
+ro.semc.ms_type_id.             u:object_r:semc_version_prop:s0
+ro.semc.version.                u:object_r:semc_version_prop:s0
+ro.semc.product.                u:object_r:semc_product_prop:s0
+persist.tareset.notfirstboot    u:object_r:tareset_notfirstboot_prop:s0
