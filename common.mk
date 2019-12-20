@@ -50,6 +50,9 @@ PRODUCT_PACKAGES += \
 # Properties
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 29
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
