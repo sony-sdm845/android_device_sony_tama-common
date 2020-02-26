@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
     libvulkan \
     vendor.display.config@1.0
 
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
