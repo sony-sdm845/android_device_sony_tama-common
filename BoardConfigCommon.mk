@@ -25,17 +25,20 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a75
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo385
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a75
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 
 TARGET_USES_64_BIT_BINDER := true
 
 # Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
@@ -47,22 +50,22 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
+TARGET_KERNEL_SOURCE := kernel/sony/sdm845
+TARGET_KERNEL_CLANG_COMPILE := true
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += video=vfb:640x400,bpp=32,memsize=3072000
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += service_locator.enable=1
 BOARD_KERNEL_CMDLINE += swiotlb=2048
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true
-BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += zram.backend=z3fold
-BOARD_KERNEL_CMDLINE := panic_on_err=1
-BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
-BOARD_KERNEL_CMDLINE += video=vfb:640x400,bpp=32,memsize=3072000
-BOARD_KERNEL_CMDLINE := msm_drm.dsi_display0=dsi_panel_cmd_display:config0
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
+BOARD_KERNEL_CMDLINE += oemboot.earlymount=/dev/block/platform/soc/1d84000.ufshc/by-name/oem:/mnt/oem:ext4:ro,barrier=1:wait,slotselect,first_stage_mount
+BOARD_KERNEL_CMDLINE := panic_on_err=1
+BOARD_KERNEL_CMDLINE := msm_drm.dsi_display0=dsi_panel_cmd_display:config0
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -72,13 +75,15 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Treble
 BOARD_VNDK_VERSION := current
 
 # ANT+
 # BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Audio
 USE_CUSTOM_AUDIO_POLICY := 1
@@ -93,7 +98,6 @@ ifeq ($(HOST_OS),linux)
     WITH_DEXPREOPT ?= true
   endif
 endif
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Display
 TARGET_USES_HWC2 := true
@@ -101,8 +105,10 @@ TARGET_USES_HWC2 := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+
 # HIDL
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE :=  $(COMMON_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
 
 # Partitions
@@ -112,9 +118,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4227858432
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_COPY_OUT_VENDOR := vendor
-
-# RenderScript
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
@@ -141,8 +144,13 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/qcom/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/private \
+    device/qcom/sepolicy/qva/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/qva/public
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)

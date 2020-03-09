@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/sony/tama-common/tama-common-vendor.mk)
 
@@ -21,6 +24,19 @@ $(call inherit-product, vendor/sony/tama-common/tama-common-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
+
+# Properties
+-include $(LOCAL_PATH)/system_prop.mk
+
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 29
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
 
 # A/B
 AB_OTA_UPDATER := true
@@ -42,8 +58,7 @@ PRODUCT_PACKAGES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library
+    AntHalService
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -51,10 +66,14 @@ PRODUCT_PACKAGES += \
     libaacwrapper
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio/audio_policy.conf
 
 # Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl.recovery \
+    bootctrl.sdm845.recovery
+
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
@@ -66,15 +85,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
+    ueventd.qcom.rc \
     01AD-483238533751333032424D5220202020-A002.bin \
     0198-54484741463847395434334241495242-0300.bin \
     tad_static \
     wait4tad_static
 
-
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \
+    libqdMetaData \
     libqdMetaData.system \
     libvulkan \
     vendor.display.config@1.0
@@ -85,19 +105,23 @@ PRODUCT_COPY_FILES += \
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/AVRCP.idc:system/usr/idc/AVRCP.idc \
-    $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-    $(LOCAL_PATH)/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
+    $(LOCAL_PATH)/idc/AVRCP.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/AVRCP.idc \
+    $(LOCAL_PATH)/idc/qwerty.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/qwerty.idc \
+    $(LOCAL_PATH)/idc/qwerty2.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/qwerty2.idc \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/qwerty.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/qwerty.kl
 
-# LiveDisplay (WIP)
-# PRODUCT_PACKAGES += \
-#    vendor.lineage.livedisplay@2.0-service-sdm
+LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.sony_sdm845
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_profiles_vendor.xml
 
 # Net
 PRODUCT_PACKAGES += \
@@ -107,6 +131,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0:64 \
     android.hardware.nfc@1.1:64 \
+    android.hardware.nfc@1.2:64 \
     android.hardware.secure_element@1.0:64 \
     com.android.nfc_extras \
     Tag \
@@ -119,6 +144,12 @@ PRODUCT_PACKAGES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
@@ -130,16 +161,9 @@ PRODUCT_PACKAGES += \
 
 # Update engine
 PRODUCT_PACKAGES += \
-    brillo_update_payload \
     update_engine \
     update_engine_sideload \
     update_verifier
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
-    libcutils \
-    libgptutils \
-    libz \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -152,4 +176,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:system/etc/permissions/privapp-permissions-wfd.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
