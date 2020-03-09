@@ -62,10 +62,15 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     Snap
 
-# Common init scripts
+# Common init
 PRODUCT_PACKAGES += \
     init.qcom.rc \
-    init.recovery.qcom.rc
+    init.recovery.qcom.rc \
+    01AD-483238533751333032424D5220202020-A002.bin \
+    0198-54484741463847395434334241495242-0300.bin \
+    tad_static \
+    wait4tad_static
+
 
 # Display
 PRODUCT_PACKAGES += \
@@ -73,13 +78,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libvulkan \
     vendor.display.config@1.0
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0_system \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -146,13 +144,12 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
-# VNDK-SP
-PRODUCT_PACKAGES += \
-    vndk-sp
-
 # WiFi Display
 PRODUCT_PACKAGES += \
     libnl
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:system/etc/permissions/privapp-permissions-wfd.xml
