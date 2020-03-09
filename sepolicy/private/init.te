@@ -1,0 +1,5 @@
+# Allow init to mount vendor configs
+allow init vendor_configs_file:dir mounton;
+
+# Allow init to write to otg_switch
+allow init sysfs_usb_supply:file w_file_perms;
