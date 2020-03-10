@@ -130,7 +130,8 @@ TARGET_USES_MKE2FS := true
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := \
-    odm
+    odm \
+    lib
 
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
