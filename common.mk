@@ -22,6 +22,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
+# Properties
+-include $(LOCAL_PATH)/system_prop.mk
+
 # A/B
 AB_OTA_UPDATER := true
 
@@ -42,8 +45,7 @@ PRODUCT_PACKAGES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library
+    AntHalService
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -51,8 +53,7 @@ PRODUCT_PACKAGES += \
     libaacwrapper
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
 
 # Boot control
 PRODUCT_PACKAGES_DEBUG += \
@@ -70,7 +71,6 @@ PRODUCT_PACKAGES += \
     0198-54484741463847395434334241495242-0300.bin \
     tad_static \
     wait4tad_static
-
 
 # Display
 PRODUCT_PACKAGES += \
@@ -92,12 +92,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 # LiveDisplay (WIP)
-# PRODUCT_PACKAGES += \
-#    vendor.lineage.livedisplay@2.0-service-sdm
+ PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.sony_sdm845
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
 
 # Net
 PRODUCT_PACKAGES += \

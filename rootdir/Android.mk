@@ -37,7 +37,7 @@ LOCAL_MODULE       := tad_static
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := sbin/tad_static
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
+LOCAL_MODULE_PATH  := $(TARGET_COPY_OUT_SYSTEM)/bin
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -45,6 +45,6 @@ LOCAL_MODULE       := wait4tad_static
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := sbin/wait4tad_static
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
+LOCAL_MODULE_PATH  := $(TARGET_COPY_OUT_SYSTEM)/bin
 include $(BUILD_PREBUILT)
 
