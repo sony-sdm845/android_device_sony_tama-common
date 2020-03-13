@@ -50,7 +50,7 @@ on init
     wait /dev/block/sda1
     chown oem_2997 oem_2997 /dev/block/sda1
     chmod 0770 /dev/block/sda1
-    exec u:r:tad_static:s0 system -- /system/bin/wait4tad_static
+    exec u:r:tad_static:s0 system -- /sbin/wait4tad_static
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
@@ -67,7 +67,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-service tad_static /system/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     user oem_2997
     group oem_2997 root
     socket tad stream 0660 system oem_2993
