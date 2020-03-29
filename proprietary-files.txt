@@ -1,12 +1,6 @@
-# ANT+
--lib/libantradio.so
--lib64/libantradio.so
-product/lib/com.qualcomm.qti.ant@1.0.so
-product/lib64/com.qualcomm.qti.ant@1.0.so
-
-# Bluetooth (aptX)
-product/lib64/libaptX_encoder.so
-product/lib64/libaptXHD_encoder.so
+# Bluetooth (aptX) - from crosshatch-user 10 QP1A.190711.020 5800535 release-keys
+product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
+product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 
 # DPM
 framework/tcmclient.jar
@@ -33,7 +27,7 @@ product/lib64/libdpmtcm.so
 -priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
 
 # IMS
-lib64/libdiag_system.so
+#lib64/libdiag_system.so
 -product/priv-app/ims/ims.apk
 product/lib64/libimscamera_jni.so
 product/lib64/libimsmedia_jni.so
@@ -57,7 +51,7 @@ etc/permissions/privapp-permissions-qti.xml
 etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 etc/sysconfig/qti_whitelist.xml
--framework/qcnvitems.jar
+#-framework/qcnvitems.jar
 -product/app/QtiTelephonyService/QtiTelephonyService.apk
 product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephony_product_privapp-permissions-qti.xml
@@ -72,7 +66,7 @@ product/framework/qti-telephony-common.jar|b4d187700f279cdbd40e74b4c3be4504f10d8
 # WiFi Display
 bin/wfdservice
 etc/init/wfdservice.rc
-etc/wfdconfigsink.xml
+#etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/libmmrtpdecoder.so
