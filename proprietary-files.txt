@@ -46,6 +46,10 @@ lib64/libmmosal.so
 -vendor/lib/libplatformconfig.so
 -vendor/lib64/libplatformconfig.so
 
+# TA daemon
+-sbin/tad_static;rootfs
+-sbin/wait4tad_static;rootfs
+
 # Telephony
 etc/permissions/privapp-permissions-qti.xml
 etc/permissions/qti_libpermissions.xml

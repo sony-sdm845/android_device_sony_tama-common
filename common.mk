@@ -86,9 +86,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc \
     01AD-483238533751333032424D5220202020-A002.bin \
-    0198-54484741463847395434334241495242-0300.bin \
-    tad_static \
-    wait4tad_static
+    0198-54484741463847395434334241495242-0300.bin
 
 # Display
 PRODUCT_PACKAGES += \

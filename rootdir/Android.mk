@@ -40,19 +40,3 @@ LOCAL_SRC_FILES    := lib/firmware/ufs/0198-54484741463847395434334241495242-030
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/lib/firmware/ufs
 include $(BUILD_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE       := tad_static
-LOCAL_MODULE_TAGS  := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := sbin/tad_static
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := wait4tad_static
-LOCAL_MODULE_TAGS  := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := sbin/wait4tad_static
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
-include $(BUILD_PREBUILT)
-
