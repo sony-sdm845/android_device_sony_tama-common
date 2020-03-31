@@ -105,6 +105,8 @@ PRODUCT_COPY_FILES += \
 
 # Net
 PRODUCT_PACKAGES += \
+    android.system.net.netd@1.0 \
+    libandroid_net \
     netutils-wrapper-1.0
 
 # NFC
@@ -120,6 +122,19 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.qcom:64
+
+# RIL
+# Interface library needed by odm blobs:
+PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.0 \
+    android.hardware.secure_element@1.0 \
+    android.hardware.radio.deprecated@1.0 \
+    android.hardware.radio@1.1 \
+    android.hardware.radio@1.2
+
+# TextClassifier
+PRODUCT_PACKAGES += \
+    textclassifier.bundle1
 
 # Telephony
 PRODUCT_PACKAGES += \
