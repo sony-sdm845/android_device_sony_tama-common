@@ -4,8 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-BUILD_BROKEN_DUP_RULES := true
-
 BOARD_VENDOR := sony
 
 COMMON_PATH := device/sony/tama-common
@@ -114,6 +112,10 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # HIDL
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
+
+# NFC
+NXP_CHIP_FW_TYPE := PN553
+BOARD_NFC_CHIPSET := pn553
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000

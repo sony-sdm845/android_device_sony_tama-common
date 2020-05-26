@@ -182,6 +182,8 @@ on early-boot
 
 on boot
     # NFC local data and storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
 
@@ -778,12 +780,6 @@ on post-fs-data
 
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
-
-service nqnfcinfo /system/vendor/bin/nqnfcinfo
-    class late_start
-    group nfc
-    user system
-    oneshot
 
 service iop /system/vendor/bin/iop
     class main
@@ -1460,11 +1456,6 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
     class late_start
     user system
     group system
-
-service esepmdaemon /system/vendor/bin/esepmdaemon
-    class core
-    user system
-    group nfc
 
 on charger
     setprop persist.sys.usb.config mass_storage
