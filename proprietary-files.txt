@@ -402,6 +402,18 @@ vendor/lib64/com.fingerprints.extension@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 
+# Fingerprint firmware
+# taken from SW_binaries_for_Xperia_Android_10.0.7.1_r1_v7a_tama.img
+vendor/firmware/fpctzfingerprint.b00|cc943bb46355b2d4145decbeafb8177e6bff10b8
+vendor/firmware/fpctzfingerprint.b01|80c99421040e821f5fc2406717aefc671508a149
+vendor/firmware/fpctzfingerprint.b02|64cbbc6ddd7cfa2a3f6ac1e37c04e4947dc3c5cc
+vendor/firmware/fpctzfingerprint.b03|c29bc49f3cd2d127571d50caea97169834ea0d54
+vendor/firmware/fpctzfingerprint.b04|a59705aed2b2e7d73f20aa5c5ab61107ee6f6382
+vendor/firmware/fpctzfingerprint.b05|ce2ba42ffc07bcb5d9865442e83a11f31932a74d
+vendor/firmware/fpctzfingerprint.b06|6027a83ac2939d9bdf3bcd0bb896ad4445d9f9b9
+vendor/firmware/fpctzfingerprint.b07|7a2ff7f379c58be79bf0f38a32c7be710fe49706
+vendor/firmware/fpctzfingerprint.mdt|b966a064325e3f052928acdbd2f711b96c1594eb
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
