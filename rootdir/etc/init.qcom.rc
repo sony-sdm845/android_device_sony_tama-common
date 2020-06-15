@@ -390,6 +390,16 @@ on boot
     chown system audio /sys/class/leds/vibrator/activate
     chmod 0660 /sys/class/leds/vibrator/activate
     #exec u:r:charge_osv_daemon:s0 root -- /vendor/bin/charge_lrc_osv.sh
+    
+    # Required for fingerprint
+    chown system system /sys/bus/spi/devices/spi0.1/clk_enable
+    chmod 0660 /sys/bus/spi/devices/spi0.1/clk_enable
+    chown system system /sys/devices/platform/soc/fpc1145_device/spi_prepare
+    chown system system /sys/devices/platform/soc/fpc1145_device/wakeup_enable
+    chown system system /sys/devices/platform/soc/fpc1145_device/irq
+    chmod 0660 /sys/devices/platform/soc/fpc1145_device/wakeup_enable
+    chmod 0660 /sys/devices/platform/soc/fpc1145_device/spi_prepare
+    chmod 0660 /sys/devices/platform/soc/fpc1145_device/irq
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -666,9 +676,6 @@ on post-fs-data
 
     # Create directory for font change support
     exec u:r:font_selector_make_dir:s0 system -- /system/bin/font-selector-make-dir.sh
-
-    # Fingerprint data folder
-    mkdir /data/vendor/fpc 0770 system system
 
     # SONY: Camera
     chown cameraserver camera /dev/sony_camera0
@@ -1722,15 +1729,6 @@ on property:persist.vendor.hvdcp_opti.start=1
     enable vendor.hvdcp_opti
     start vendor.hvdcp_opti
     setprop persist.vendor.hvdcp_opti.start 0
-
-service fps_hal /vendor/bin/hw/fpc_fingerprint@2.1_HIDL-service
-    # "class hal" causes a race condition on some devices due to files created
-    # in /data. As a workaround, postpone startup until later in boot once
-    # /data is mounted.
-    class late_start
-    user system
-    group system input
-    socket fpc_oem stream 0660 system system
 
 service vendor.somc.hardware.camera-provider-1-0 /vendor/bin/hw/vendor.somc.hardware.camera.provider@1.0-service
     class hal

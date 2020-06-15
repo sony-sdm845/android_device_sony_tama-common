@@ -1,8 +1,4 @@
 # HALs
-attribute hal_fingerprint_fpc;
-attribute hal_fingerprint_fpc_client;
-attribute hal_fingerprint_fpc_server;
-
 attribute hal_idd;
 attribute hal_idd_client;
 attribute hal_idd_server;
