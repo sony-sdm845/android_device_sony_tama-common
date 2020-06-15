@@ -324,10 +324,8 @@ firmware_directories /vendor/firmware_mnt/image/
 # Ramdump devices
 /dev/ramdump*             0640   system     system
 
-# Fingerprint device
-/dev/qbt*                 0660   system     system
-/sys/class/fts/touch_aoi aoi_set 0660 root system
-/sys/class/fts/touch_aoi power_set 0660 root system
+# Fingerprint sensor  device
+/dev/fingerprint         0664 system input
 
 #ImproveTouch device
 /dev/hbtp_input           0660   system     system

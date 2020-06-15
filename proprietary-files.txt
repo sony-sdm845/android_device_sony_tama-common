@@ -398,7 +398,6 @@ vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib/vendor.qti.esepowermanager@1.0.so
 
 # Fingerprint
-vendor/bin/hw/fpc_fingerprint@2.1_HIDL-service
 vendor/lib64/com.fingerprints.extension@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
