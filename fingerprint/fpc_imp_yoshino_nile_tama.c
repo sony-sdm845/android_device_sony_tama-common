@@ -47,13 +47,11 @@ static err_t fpc_deep_sleep(fpc_imp_data_t *data);
 static err_t fpc_sensor_wake(fpc_imp_data_t *data);
 
 static const char *error_strings[] = {
-#if defined(USE_FPC_NILE) || defined(USE_FPC_TAMA)
     "FPC_ERROR_TEMPLATE_CORRUPTED",
     "FPC_ERROR_DB",
     "FPC_ERROR_CRYPTO",
     "UNKNOWN_ERROR",
     "UNKNOWN_ERROR",
-#endif
     "FPC_ERROR_PN",
     "FPC_ERROR_RESET_HARDWARE",
     "FPC_ERROR_NOT_INITIALIZED",
@@ -354,7 +352,6 @@ err_t fpc_wait_finger_lost(fpc_imp_data_t *data)
 
     result = send_normal_command(ldata, FPC_GROUP_SENSOR, FPC_WAIT_FINGER_LOST);
 
-#ifdef USE_FPC_TAMA
     ALOGE_IF(result, "Wait finger lost result: %d", result);
     if(result)
         return result;
@@ -364,10 +361,6 @@ err_t fpc_wait_finger_lost(fpc_imp_data_t *data)
     if(result == FPC_EVENT_ERROR)
         return -1;
     return result == FPC_EVENT_FINGER;
-#else
-    ALOGE_IF(result < 0, "Wait finger lost result: %d", result);
-    return result;
-#endif
 }
 
 /**
@@ -422,10 +415,8 @@ err_t fpc_capture_image(fpc_imp_data_t *data)
                 break;
             }
 
-#ifdef USE_FPC_TAMA
             // TEMPORARY: Capture image sometimes seems to block way too long.
             fpc_keep_awake(&data->event, 1, 400);
-#endif
             ALOGD("Finger down, capturing image");
             ret = send_normal_command(ldata, FPC_GROUP_SENSOR,
                 FPC_CAPTURE_IMAGE);
@@ -450,11 +441,9 @@ err_t fpc_capture_image(fpc_imp_data_t *data)
                 break;
             }
         };
-#ifdef USE_FPC_TAMA
         int rc = fpc_deep_sleep(data);
         ALOGE_IF(rc, "Sensor deep sleep failed: %d", rc);
         // Do not return rc, return the code from above instead.
-#endif
     } else {
         ret = 1000;
 
@@ -467,17 +456,6 @@ err_t fpc_capture_image(fpc_imp_data_t *data)
     }
 
     return ret;
-}
-
-bool fpc_navi_supported(fpc_imp_data_t __unused *data)
-{
-#if defined(USE_FPC_YOSHINO) || defined(USE_FPC_NILE)
-    // On yoshino TZ-app crashes the entire phone with this feature.
-    // On nile this seems to be unsupported and results in FPC_ERROR_CONFIG
-    return false;
-#else
-    return true;
-#endif
 }
 
 err_t fpc_navi_enter(fpc_imp_data_t *data)
@@ -823,7 +801,6 @@ err_t fpc_deep_sleep(fpc_imp_data_t *data)
 
 err_t fpc_sensor_wake(fpc_imp_data_t *data)
 {
-#ifdef USE_FPC_TAMA
     int ret;
     fpc_data_t *ldata = (fpc_data_t *)data;
 
@@ -833,9 +810,6 @@ err_t fpc_sensor_wake(fpc_imp_data_t *data)
     if (ret < 0)
         return ret;
     ALOGV("%s: returned %d", __func__, ret);
-#else
-    (void)data;
-#endif
     return 0;
 }
 

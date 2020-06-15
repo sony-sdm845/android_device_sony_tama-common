@@ -326,16 +326,11 @@ void BiometricsFingerprint::IdleAsync() {
     ALOGD(__func__);
     int rc;
 
-    if (!fpc_navi_supported(mDevice->fpc)) {
-        WorkHandler::IdleAsync();
-        return;
-    }
-
     // Wait for a new state for at most 500ms before entering navigation mode.
     // This gives the service some time to execute multiple commands on the HAL
     // sequentially before needlessly going into navigation mode and exit it
     // almost immediately after.
-    else if (mWt.isEventAvailable(500)) {
+    if (mWt.isEventAvailable(500)) {
         ALOGD("%s: EXIT: Handle event instead of navigation", __func__);
         return;
     }
@@ -547,16 +542,10 @@ void BiometricsFingerprint::AuthenticateAsync() {
                 sleep(1);
                 result = fpc_init(&mDevice->fpc, mWt.getEventFd());
                 LOG_ALWAYS_FATAL_IF(result < 0, "REINITIALIZE: Failed to init fpc: %d", result);
-#ifdef USE_FPC_YOSHINO
-                int grp_err = __setActiveGroup(gid);
-                if (grp_err)
-                    ALOGE("%s : Cannot reinitialize database", __func__);
-#else
                 // Break out of the loop, and make sure ERROR_HW_UNAVAILABLE
                 // is raised afterwards, similar to the stock hal:
                 status = -1;
                 break;
-#endif
             }
         }
     }

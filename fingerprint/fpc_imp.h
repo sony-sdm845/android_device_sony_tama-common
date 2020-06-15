@@ -67,7 +67,6 @@ err_t fpc_close(fpc_imp_data_t **data); //close this implementation
 err_t fpc_init(fpc_imp_data_t **data, int event_fd); //init sensor
 
 
-bool fpc_navi_supported(fpc_imp_data_t *data);
 err_t fpc_navi_enter(fpc_imp_data_t *data);
 err_t fpc_navi_exit(fpc_imp_data_t *data);
 err_t fpc_navi_poll(fpc_imp_data_t *data);

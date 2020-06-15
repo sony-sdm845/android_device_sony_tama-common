@@ -14,7 +14,6 @@ LOCAL_SRC_FILES := \
 LOCAL_SRC_FILES += fpc_imp_yoshino_nile_tama.c
 HAS_FPC := true
 LOCAL_CFLAGS += \
-    -DUSE_FPC_TAMA \
     -DHAS_DYNAMIC_POWER_MANAGEMENT
 
 ifneq ($(HAS_FPC),true)
