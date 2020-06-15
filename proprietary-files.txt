@@ -397,11 +397,6 @@ vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib/vendor.qti.esepowermanager@1.0.so
 
-# Fingerprint
-vendor/lib64/com.fingerprints.extension@1.0.so
-vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
-vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
-
 # Fingerprint firmware
 # taken from SW_binaries_for_Xperia_Android_10.0.7.1_r1_v7a_tama.img
 vendor/firmware/fpctzfingerprint.b00|cc943bb46355b2d4145decbeafb8177e6bff10b8
