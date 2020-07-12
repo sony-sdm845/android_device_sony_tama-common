@@ -1,0 +1,1 @@
+allow sensors tad_socket:sock_file w_file_perms;
