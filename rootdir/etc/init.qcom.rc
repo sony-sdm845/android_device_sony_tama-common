@@ -575,27 +575,6 @@ on post-fs-data
     # Create dir for TUI
     mkdir /data/vendor/tui 0700 system drmrpc
 
-    # idd
-    # We expect that vold has already started and would not unmount the partitions again.
-    mkdir /mnt/idd 0751 oem_2987 oem_2987
-    mkdir /mnt/rca 0750 oem_2987 oem_2987
-    mount_all /vendor/etc/idd.fstab
-    chown oem_2987 oem_2987 /mnt/idd
-    chmod 0751 /mnt/idd
-    rmdir /mnt/idd/lost+found
-    chown oem_2987 oem_2987 /mnt/rca
-    chmod 0750 /mnt/rca
-    rmdir /mnt/rca/lost+found
-    
-    mkdir /mnt/idd/lost+found 0770 root root
-    mkdir /mnt/idd/output 0755 oem_2987 oem_2987
-    mkdir /mnt/idd/socket 0711 oem_2987 oem_2987
-    mkdir /mnt/idd/startup-prober 0700 root root
-    
-    restorecon_recursive --force /mnt/idd
-    mkdir /mnt/rca/plugins 0750 oem_2987 oem_2987
-    restorecon_recursive --force /mnt/rca
-
     # Charger
     # power_supply sysfs
     chmod 0664 /sys/class/power_supply/battery/charging_enabled
@@ -886,13 +865,6 @@ on property:vendor.bluetooth.startbtlogger=false
 
 on property:vendor.media.target.version=*
     setprop vendor.sys.media.target.version ${vendor.media.target.version}
-
-on property:sys.user.0.ce_available=true
-    # Remounting partitions here just in case vold restarts
-    mount_all /vendor/etc/idd.fstab
-    mount_all /vendor/etc/qns.fstab
-    # Setting property to inform that partitions are mounted
-    setprop vendor.idd.partitions_ready 1
 
 on property:ro.boot.verifiedbootstate=orange
     setprop persist.sys.usb.config adb
@@ -1623,12 +1595,6 @@ service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     restart vendor.ims_rtp_daemon
-
-service iddd /vendor/bin/iddd
-    class core
-    user oem_2987
-    group oem_2987 log inet oem_2993
-    writepid /dev/cpuset/system-background/tasks
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))

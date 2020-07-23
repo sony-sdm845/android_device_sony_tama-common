@@ -480,20 +480,6 @@ vendor/firmware/a630_zap.mdt
 vendor/lib64/hw/vulkan.sdm845.so
 vendor/lib/hw/vulkan.sdm845.so
 
-# IDD
-vendor/bin/hw/vendor.semc.system.idd@1.0-service
-vendor/bin/iddd
-vendor/etc/idd.conf
-vendor/etc/iddd.conf
-vendor/etc/init/vendor.semc.system.idd@1.0-service.rc
-vendor/etc/security/idd_config.pem
-vendor/etc/security/idd_report.pem
-vendor/lib64/libidd.so
-vendor/lib64/libprotobuf-c-idd.so
-vendor/lib64/vendor.semc.system.idd@1.0.so
-vendor/lib/libidd.so
-vendor/lib/vendor.semc.system.idd@1.0.so
-
 # IMS
 -product/app/uceShimService/uceShimService.apk
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml

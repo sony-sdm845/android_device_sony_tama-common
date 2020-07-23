@@ -19,21 +19,6 @@
 # FPC fingerprint socket
 /dev/socket/fpc_oem		u:object_r:hal_fpc_fingerprint_socket:s0
 
-# idd
-/mnt/idd                                  u:object_r:idd_root_dir:s0
-/mnt/rca                                  u:object_r:idd_rca_dir:s0
-/mnt/rca(/.*)?                            u:object_r:idd_rca_file:s0
-/mnt/idd(/.*)?                            u:object_r:idd_data_file:s0
-/mnt/idd/input(/.*)?                      u:object_r:idd_input_file:s0
-/mnt/idd/lost\+found(/.*)?                u:object_r:idd_lostfound_file:s0
-/mnt/idd/output(/.*)?                     u:object_r:idd_output_file:s0
-/mnt/idd/private(/.*)?                    u:object_r:idd_private_file:s0
-/mnt/idd/socket(/.*)?                     u:object_r:idd_socket:s0
-/mnt/idd/socket/idd_cl                    u:object_r:idd_socket:s0
-/mnt/idd/socket/idd_co                    u:object_r:idd_socket:s0
-/mnt/idd/socket/idd_co_stream             u:object_r:idd_socket:s0
-/mnt/idd/startup-prober(/.*)?             u:object_r:startupprober_file:s0
-
 # NFC
 /dev/pn553                u:object_r:nfc_device:s0
 
@@ -59,7 +44,6 @@
 /(vendor|system/vendor)/bin/init\.qcom\.msim\.sh        u:object_r:init-qcom-msim-sh_exec:s0
 
 # Vendor executables
-/(vendor|system/vendor)/bin/iddd		        u:object_r:idd_exec:s0
 /(vendor|system/vendor)/bin/hw/kobjeventd		u:object_r:kobjeventd_exec:s0
 /(vendor|system/vendor)/bin/keyprovd		        u:object_r:keyprovd_exec:s0
 /(vendor|system/vendor)/bin/mlog_qmi_service            u:object_r:mlog_qmi_service_exec:s0
@@ -76,7 +60,6 @@
 /(vendor|system/vendor)/bin/hw/fpc_fingerprint@2\.1_HIDL-service		        u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.semc\.hardware\.secd@1\.0-service		u:object_r:hal_secd_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.semc\.hardware\.thermal@1\.0-service	        u:object_r:hal_somc_thermal_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.semc\.system\.idd@1\.0-service    		u:object_r:hal_idd_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.somc\.hardware\.camera\.provider@1\.0-service    u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.somc\.hardware\.miscta@1\.0-service		u:object_r:hal_miscta_default_exec:s0
 
