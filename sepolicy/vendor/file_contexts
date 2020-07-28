@@ -80,3 +80,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.somc\.hardware\.camera\.provider@1\.0-service    u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.somc\.hardware\.miscta@1\.0-service		u:object_r:hal_miscta_default_exec:s0
 
+# Modem-switcher
+/system/bin/sony-modem-switcher                    u:object_r:modem-switcher_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.somc\.hardware\.modemswitcher@1\.0-service               u:object_r:hal_modemswitcher_default_exec:s0

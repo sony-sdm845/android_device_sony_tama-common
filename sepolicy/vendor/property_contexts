@@ -12,3 +12,7 @@ ro.vendor.semc.                 u:object_r:sony_prop:s0
 ro.vendor.sony.                 u:object_r:sony_prop:s0
 persist.vendor.mlog_qmi.        u:object_r:vendor_radio_prop:s0
 vendor.cover_state              u:object_r:vendor_cover_state_prop:s0
+persist.somc.cust.               u:object_r:cust_system_prop:s0
+persist.somc.modemswitcher.      u:object_r:sony_modemswitcher_prop:s0
+somc.cust.                       u:object_r:cust_debug_system_prop:s0
+sony.modemswitcher.              u:object_r:sony_modemswitcher_prop:s0
