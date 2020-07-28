@@ -246,6 +246,13 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.sony_sdm845
+    
+# Modem switcher
+PRODUCT_PACKAGES += \
+    ModemConfig
+
+PRODUCT_COPY_FILES += \
+    $(shell find $(LOCAL_PATH)/rootdir/vendor/oem -type f -printf '%p:$(TARGET_COPY_OUT_VENDOR)/oem/%P\n')
 
 # Media
 PRODUCT_PACKAGES += \

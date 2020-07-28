@@ -12,5 +12,5 @@ type suntory_prop, property_type;
 type vendor_wifi_prop, property_type;
 type vendor_cover_state_prop, property_type;
 type cust_debug_system_prop, property_type;
-type cust_system_prop, property_type;
+type cust_system_prop, property_type, extended_core_property_type;
 type sony_modemswitcher_prop, property_type;
