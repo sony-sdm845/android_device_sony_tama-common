@@ -29,6 +29,18 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage/lineage-sdk
 
+# Properties
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 29
+PRODUCT_EXTRA_VNDK_VERSIONS := $(PRODUCT_TARGET_VNDK_VERSION)
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
+
 # A/B
 AB_OTA_UPDATER := true
 
@@ -46,17 +58,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 PRODUCT_PACKAGES += \
     otapreopt_script
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
-
-# Properties
-PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 29
 
 # Audio
 PRODUCT_PACKAGES += \
