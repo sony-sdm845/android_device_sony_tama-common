@@ -290,6 +290,10 @@ PRODUCT_PACKAGES += \
     SecureElement \
     Tag
 
+PRODUCT_PACKAGES += \
+    libchrome \
+    libchrome.vendor
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service-qti
