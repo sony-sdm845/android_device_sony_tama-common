@@ -22,7 +22,7 @@ debug.sf.enable_hwc_vds=1
 debug.sf.latch_unsignaled=1
 
 # Media
-media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+media.settings.xml=/system/etc/media_profiles_vendor.xml
 
 # Netflix custom property
 ro.netflix.bsp_rev=Q845-05000-1
