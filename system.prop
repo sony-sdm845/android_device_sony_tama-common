@@ -3,8 +3,6 @@ audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
 audio.offload.video=true
 ro.af.client_heap_size_kbyte=7168
-ro.config.media_vol_steps=25
-ro.config.vc_call_vol_steps=11
 
 # BPF
 ro.kernel.ebpf.supported=true
@@ -32,7 +30,7 @@ debug.sf.enable_hwc_vds=1
 debug.sf.latch_unsignaled=1
 
 # Media
-media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+media.settings.xml=/system/etc/media_profiles_vendor.xml
 
 # Netflix custom property
 ro.netflix.bsp_rev=Q845-05000-1

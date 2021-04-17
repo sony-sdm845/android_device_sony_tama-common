@@ -1,3 +1,0 @@
-allow thermal-engine sysfs_devfreq:dir r_dir_perms;
-
-get_prop(thermal-engine, hwservicemanager_prop)
