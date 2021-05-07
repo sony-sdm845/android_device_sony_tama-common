@@ -1,2 +1,5 @@
 on charger
     write /sys/class/backlight/panel0-backlight/brightness 150
+
+on property:ro.boot.rf_version=*
+    setprop vendor.rf.version ${ro.boot.rf_version}
