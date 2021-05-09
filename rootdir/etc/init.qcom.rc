@@ -1,5 +1,11 @@
 on charger
     write /sys/class/backlight/panel0-backlight/brightness 150
 
+service cvphalservice /system/bin/true
+    disabled
+
+service vendor.networkstats-wifi-1-0 /system/bin/true
+    disabled
+
 on property:ro.boot.rf_version=*
     setprop vendor.rf.version ${ro.boot.rf_version}
