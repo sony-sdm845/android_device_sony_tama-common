@@ -1,4 +1,4 @@
-# Sony package version: 52.1.A.3.92
+# Sony package version: 52.1.A.3.137
 
 # ADSP
 vendor/bin/adsprpcd
@@ -1090,6 +1090,8 @@ vendor/bin/subsystem_ramdump
 vendor/bin/tad
 
 # TA QMI
+bin/updatemiscta
+etc/init/updatemiscta.rc
 vendor/bin/taimport_vendor
 vendor/bin/ta_qmi_service
 -vendor/lib/libta.so
