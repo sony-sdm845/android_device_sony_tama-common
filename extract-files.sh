@@ -23,6 +23,9 @@ source "${HELPER}"
 
 function blob_fixup() {
     case "${1}" in
+        lib/libcacao_service.so | lib/libcacao_process_ctrl_gateway.so | lib/libcacao_client.so | lib64/libcacao_service.so | lib64/libcacao_process_ctrl_gateway.so | lib64/libcacao_client.so)
+            "${PATCHELF}" --remove-needed "android.hidl.manager@1.0.so" "${2}"
+            ;;
         product/lib/libdpmframework.so)
             sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/" "${2}"
             ;;
